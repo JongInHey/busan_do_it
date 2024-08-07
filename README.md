@@ -23,7 +23,7 @@
 - [x] styled-reset
 - [x] helmet-async
 - [x] react-spinners
-- [] swiper
+- [x] swiper
 - [] react-hook-form
 - [] react-icons
 - [] gh-pages

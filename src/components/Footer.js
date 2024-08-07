@@ -7,6 +7,7 @@ const Container = styled.footer`
   justify-content: center;
   align-items: center;
   margin-top: 200px;
+  background-color: rgba(0, 0, 0, 0.1);
 `;
 
 export const Footer = () => {

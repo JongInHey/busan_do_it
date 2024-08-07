@@ -12,7 +12,11 @@ export const Container = styled.header`
   left: 0;
   z-index: 99;
 
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+
+  @media screen and (max-width: 1024px) {
+    padding: 20px ${spacing.taside};
+  }
 `;
 
 export const LOGO = styled.div`
@@ -24,7 +28,7 @@ export const LOGO = styled.div`
 `;
 
 export const Menu = styled.ul`
-  width: 25%;
+  width: 400px;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -46,6 +50,10 @@ export const Menu = styled.ul`
     justify-content: center;
     align-items: center;
     color: white;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 300px;
   }
 `;
 
@@ -70,6 +78,12 @@ export const SideMenu = styled.ul`
     justify-content: center;
     align-items: center;
     color: white;
+  }
+
+  @media screen and (max-width: 1024px) {
+    li {
+      width: 80px;
+    }
   }
 `;
 
@@ -115,10 +129,11 @@ export const DropGnb = styled.div`
   opacity: ${(props) => (props.$show ? "1" : "0")};
   animation: ${(props) => (props.$show ? fadeIn : fadeOut)} 0.3s ease-in-out;
   pointer-events: ${(props) => (props.$show ? "auto" : "none")};
-  a {
+  div {
     padding: 10px;
     color: white;
-    white-space: nowrap;
+    cursor: pointer;
+    text-align: center;
 
     &:hover {
       background-color: #f0f0f0;

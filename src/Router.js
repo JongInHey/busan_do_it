@@ -7,13 +7,19 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { routes } from "./routes";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { useState } from "react";
 
 export const Router = () => {
+  const [lang, setLang] = useState("Kr");
+
+  const handleLangChange = (langChange) => {
+    setLang(langChange);
+  };
   return (
     <HashRouter>
-      <Header />
+      <Header onLangChange={handleLangChange} />
       <Routes>
-        <Route path={routes.home} element={<Home />} />
+        <Route path={routes.home} element={<Home lang={lang} />} />
         <Route path={routes.detail} element={<Detail />} />
         <Route path={routes.placelists} element={<PlaceList />} />
         <Route path={routes.search} element={<Search />} />

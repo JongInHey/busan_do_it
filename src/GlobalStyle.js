@@ -7,8 +7,9 @@ export const colors = {
 
 export const spacing = {
   side: "80px",
-  taside: "50px",
+  taside: "40px",
   moSide: "20px",
+  top: "70px",
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -21,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         font-family: "Noto Sans KR", sans-serif;
         background-color: white;
-        color: #222;
+        color: #212121;
         letter-spacing: -1px;
         word-break: keep-all;
     }
@@ -33,6 +34,6 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
-        color: #222;
+        color: #212121;
     }
 `;

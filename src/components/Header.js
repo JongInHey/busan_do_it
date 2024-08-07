@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Container, LOGO, Menu, SideMenu, Lang, DropGnb } from "./HeaderStyle";
 
-export const Header = () => {
+export const Header = ({ onLangChange }) => {
   const [dropOpen, setDropOpen] = useState(false);
   const dropgnbRef = useRef();
 
@@ -16,15 +16,17 @@ export const Header = () => {
       setDropOpen(false);
     }
   };
+  const handleLangChange = (lang) => {
+    onLangChange(lang);
+    setDropOpen(false);
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOut);
     return () => {
       document.removeEventListener("mousedown", handleClickOut);
     };
-  }, []);
-
-  console.log(dropOpen);
+  }, [dropgnbRef]);
 
   return (
     <Container>
@@ -51,10 +53,10 @@ export const Header = () => {
         <li ref={dropgnbRef}>
           <Lang onClick={toggleDropdown}>언어</Lang>
           <DropGnb $show={dropOpen}>
-            <Link to={routes.home}>한국어</Link>
-            <Link to={routes.home}>중국어</Link>
-            <Link to={routes.home}>일본어</Link>
-            <Link to={routes.home}>영어</Link>
+            <div onClick={() => handleLangChange("Kr")}>한국어</div>
+            <div onClick={() => handleLangChange("Zhs")}>중국어</div>
+            <div onClick={() => handleLangChange("Ja")}>일본어</div>
+            <div onClick={() => handleLangChange("En")}>영어</div>
           </DropGnb>
         </li>
       </SideMenu>

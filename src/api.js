@@ -11,11 +11,13 @@ const url = (urlName) => {
   return baseUrl + `${urlName}?ServiceKey=${ServiceKey}&${options}`;
 };
 
-export const shoppingList = () =>
-  fetch(url("ShoppingService/getShoppingKr")).then((res) => res.json());
+export const shoppingList = (lang) =>
+  fetch(url(`ShoppingService/getShopping${lang}`)).then((res) => res.json());
 
-export const festivalList = () =>
-  fetch(url("FestivalService/getFestivalKr")).then((res) => res.json());
+export const festivalList = (lang) =>
+  fetch(url(`FestivalService/getFestival${lang}`)).then((res) => res.json());
 
-export const attractionList = () =>
-  fetch(url("AttractionService/getAttractionKr")).then((res) => res.json());
+export const attractionList = (lang) =>
+  fetch(url(`AttractionService/getAttraction${lang}`)).then((res) =>
+    res.json()
+  );
