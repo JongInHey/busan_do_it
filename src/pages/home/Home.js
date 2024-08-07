@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { attractionList, festivalList, shoppingList } from "../../api";
+import { PageTitle } from "../../components/PageTitle";
 
 export const Home = () => {
   const [shopData, setShopData] = useState();
@@ -26,5 +27,10 @@ export const Home = () => {
   console.log(festiData);
   console.log(attractData);
 
-  return <div>Home</div>;
+  return (
+    <>
+      <PageTitle titleName={"Home"} />
+      <div>Home</div>
+    </>
+  );
 };

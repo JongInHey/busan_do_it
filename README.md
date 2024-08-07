@@ -4,9 +4,9 @@
 
 - [x] Router 설정
 - [x] 컴포넌트, 폴더 설정
-- [] globalStyled, 웹 폰트 설정
-- [] Header, Footer 구성
-- [] Helmet 타이틀 설정
+- [x] globalStyled, 웹 폰트 설정
+- [x] Header, Footer 구성
+- [x] Helmet 타이틀 설정
 - [] Api 설정
 - [] Loading 설정
 - [] scroll event 설정
@@ -21,7 +21,7 @@
 - [x] node-fetch
 - [x] styled-components
 - [x] styled-reset
-- [] helmet-async
+- [x] helmet-async
 - [] swiper
 - [] react-spinners
 - [] react-hook-form
