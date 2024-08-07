@@ -6,7 +6,7 @@ export const colors = {
 };
 
 export const spacing = {
-  side: "100px",
+  side: "80px",
   taside: "50px",
   moSide: "20px",
 };
