@@ -110,6 +110,7 @@ export const Home = ({ lang }) => {
   const [festiData, setFestiData] = useState();
   const [attractData, setAttractData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [randomIndex, setRandomIndex] = useState(0);
 
   const cleanTitle = (title) => {
     const index = title.indexOf("(");
@@ -133,6 +134,10 @@ export const Home = ({ lang }) => {
         setShopData(getShopData.item);
         setFestiData(getFestiData.item);
         setAttractData(getAttrData.item);
+
+        const randomIdx = Math.floor(Math.random() * getShopData.item.length);
+        setRandomIndex(randomIdx);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -151,11 +156,11 @@ export const Home = ({ lang }) => {
       ) : (
         <>
           <PageTitle titleName={"Home"} />
-          <Container $bgUrl={attractData[0].MAIN_IMG_NORMAL}>
+          <Container $bgUrl={attractData[randomIndex].MAIN_IMG_NORMAL}>
             <WhiteBg />
             <ConWrap>
-              <h3>{cleanTitle(attractData[0].MAIN_TITLE)}</h3>
-              <p>{attractData[0].ITEMCNTNTS.slice(0, 200) + "..."}</p>
+              <h3>{attractData[randomIndex].PLACE}</h3>
+              <p>{attractData[randomIndex].ITEMCNTNTS.slice(0, 200) + "..."}</p>
             </ConWrap>
           </Container>
 
