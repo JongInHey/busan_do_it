@@ -3,7 +3,7 @@ import { attractionList, festivalList, shoppingList } from "../../api";
 import { PageTitle } from "../../components/PageTitle";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
-import { spacing } from "../../GlobalStyle";
+import { colors, spacing } from "../../GlobalStyle";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid } from "swiper/modules";
@@ -68,11 +68,17 @@ const Section = styled.section`
   .swiper-slide {
     margin-top: 0 !important;
   }
+
+  span {
+    font-size: 30px;
+    color: ${colors.point};
+    font-weight: 700;
+  }
 `;
 
 const Title = styled.div`
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 15px;
 `;
 
@@ -165,7 +171,9 @@ export const Home = ({ lang }) => {
           </Container>
 
           <Section>
-            <Title>쇼핑의 모든 것, 부산</Title>
+            <Title>
+              <span>쇼핑</span>의 모든 것, 부산
+            </Title>
             <Swiper
               slidesPerView={5.4}
               grid={{
@@ -195,7 +203,9 @@ export const Home = ({ lang }) => {
           </Section>
 
           <Section>
-            <Title>부산 축제의 모든 것</Title>
+            <Title>
+              부산 <span>축제</span>의 모든 것
+            </Title>
             <Swiper slidesPerView={3.2} spaceBetween={15}>
               {festiData.map((data) => (
                 <SwiperSlide key={data.UC_SEQ}>
@@ -216,7 +226,9 @@ export const Home = ({ lang }) => {
           </Section>
 
           <Section>
-            <Title>부산 명소의 모든 것</Title>
+            <Title>
+              부산의 <span>핫한</span> 장소
+            </Title>
             <Swiper
               slidesPerView={4.4}
               grid={{
