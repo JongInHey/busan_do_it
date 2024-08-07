@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { attractionList, festivalList, shoppingList } from "../../api";
 import { PageTitle } from "../../components/PageTitle";
+import { Loading } from "../../components/Loading";
 
 export const Home = () => {
   const [shopData, setShopData] = useState();
   const [festiData, setFestiData] = useState();
   const [attractData, setAttractData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -17,6 +19,7 @@ export const Home = () => {
         setShopData(getShoppingKr.item);
         setFestiData(getFestivalKr.item);
         setAttractData(getAttractionKr.item);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -29,8 +32,14 @@ export const Home = () => {
 
   return (
     <>
-      <PageTitle titleName={"Home"} />
-      <div>Home</div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <PageTitle titleName={"Home"} />
+          <div>Home</div>
+        </>
+      )}
     </>
   );
 };
