@@ -2,8 +2,8 @@
 
 ### 작업 내용
 
-- [] Router 설정
-- [] 컴포넌트, 폴더 설정
+- [x] Router 설정
+- [x] 컴포넌트, 폴더 설정
 - [] globalStyled, 웹 폰트 설정
 - [] Header, Footer 구성
 - [] Helmet 타이틀 설정
@@ -17,10 +17,10 @@
 
 ### 설치할 npm
 
-- [] react-router-dom
-- [] node-fetch
-- [] styled-components
-- [] styled-reset
+- [x] react-router-dom
+- [x] node-fetch
+- [x] styled-components
+- [x] styled-reset
 - [] helmet-async
 - [] swiper
 - [] react-spinners
