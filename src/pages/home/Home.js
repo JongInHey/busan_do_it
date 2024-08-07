@@ -147,7 +147,7 @@ export const Home = ({ lang }) => {
 
   // console.log(shopData);
   // console.log(festiData);
-  console.log(attractData);
+  // console.log(attractData);
 
   return (
     <>

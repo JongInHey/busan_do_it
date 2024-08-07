@@ -5,6 +5,7 @@ import { Container, LOGO, Menu, SideMenu, Lang, DropGnb } from "./HeaderStyle";
 
 export const Header = ({ onLangChange }) => {
   const [dropOpen, setDropOpen] = useState(false);
+  const [selectLang, setSelectLang] = useState("한국어");
   const dropgnbRef = useRef();
 
   const toggleDropdown = () => {
@@ -16,7 +17,8 @@ export const Header = ({ onLangChange }) => {
       setDropOpen(false);
     }
   };
-  const handleLangChange = (lang) => {
+  const handleLangChange = (lang, langName) => {
+    setSelectLang(langName);
     onLangChange(lang);
     setDropOpen(false);
   };
@@ -51,12 +53,14 @@ export const Header = ({ onLangChange }) => {
           <Link to={routes.search}>검색</Link>
         </li>
         <li ref={dropgnbRef}>
-          <Lang onClick={toggleDropdown}>언어</Lang>
+          <Lang onClick={toggleDropdown}>{selectLang}</Lang>
           <DropGnb $show={dropOpen}>
-            <div onClick={() => handleLangChange("Kr")}>한국어</div>
-            <div onClick={() => handleLangChange("Zhs")}>중국어</div>
-            <div onClick={() => handleLangChange("Ja")}>일본어</div>
-            <div onClick={() => handleLangChange("En")}>영어</div>
+            <div onClick={() => handleLangChange("Kr", "한국어")}>한국어</div>
+            <div onClick={() => handleLangChange("Zht", "繁體中文")}>
+              繁體中文
+            </div>
+            <div onClick={() => handleLangChange("Ja", "日本語")}>日本語</div>
+            <div onClick={() => handleLangChange("En", "English")}>English</div>
           </DropGnb>
         </li>
       </SideMenu>
