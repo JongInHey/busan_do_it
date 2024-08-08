@@ -40,6 +40,7 @@ export const Menu = styled.ul`
   align-items: center;
   flex-direction: column;
   font-size: 30px;
+
   li {
     width: 100%;
     height: 50px;
@@ -71,6 +72,10 @@ export const Menu = styled.ul`
 
   @media screen and (max-width: 768px) {
     font-size: 20px;
+
+    li {
+      margin-bottom: 10px;
+    }
   }
 `;
 
@@ -91,9 +96,8 @@ export const SideMenu = styled.ul`
 
   @media screen and (max-width: 768px) {
     font-size: 20px;
-    right: 5%;
-    bottom: 5%;
-    width: 90%;
+    right: 0;
+    width: 100%;
   }
 `;
 
@@ -112,6 +116,7 @@ export const Lang = styled.div`
   @media screen and (max-width: 768px) {
     font-size: 20px;
   }
+
   &:hover {
     background-color: ${colors.gradient};
     color: white;

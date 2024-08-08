@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Container, LOGO, Menu, SideMenu, Lang, DropGnb } from "./HeaderStyle";
 import styled from "styled-components";
-import { colors } from "../GlobalStyle";
+import { colors, spacing } from "../GlobalStyle";
 import { FaMapMarkerAlt, FaShopify, FaWindowClose } from "react-icons/fa";
 import { GiFireworkRocket } from "react-icons/gi";
 import { MdSavedSearch } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { RiMenuFold3Line2 } from "react-icons/ri";
+import { MENUIMG_URL } from "../constant/imgUrl";
 
 const HamburgerIcon = styled.div`
   font-size: 30px;
@@ -25,17 +26,18 @@ const DrawerMenu = styled.div`
   position: fixed;
   top: 0;
   right: ${(props) => props.$active};
-  transition: 0.3s;
+  transition: 0.4s;
   width: 50%;
   height: 100%;
   background-color: white;
   z-index: 101;
-  padding: 20px;
+  padding: 270px ${spacing.moSide} 0;
   display: flex;
   flex-direction: column;
 
   @media screen and (max-width: 768px) {
-    padding: 20px 0;
+    padding: 160px 0;
+    width: 65%;
   }
 `;
 
@@ -51,20 +53,31 @@ const DrawerOverlay = styled.div`
 `;
 
 const CloseButton = styled.div`
-  align-self: flex-end;
+  position: absolute;
+  top: 1%;
+  right: 2%;
+  z-index: 102;
   cursor: pointer;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 26px;
+`;
+
+const ProfileBg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 250px;
+  width: 100%;
+  background: url(${MENUIMG_URL}) no-repeat center / cover;
 
   @media screen and (max-width: 768px) {
-    margin-right: 15px;
+    height: 150px;
   }
 `;
 
 export const Header = ({ onLangChange }) => {
   const [selectLang, setSelectLang] = useState("한국어");
   const [dropOpen, setDropOpen] = useState(false);
-  const [active, setActive] = useState("-50%");
+  const [active, setActive] = useState("-100%");
   const [overlayActive, setOverlayActive] = useState("none");
   const [drawerOpen, setDrawerOpen] = useState(true);
   const dropgnbRef = useRef();
@@ -79,7 +92,7 @@ export const Header = ({ onLangChange }) => {
       setActive("0");
       setOverlayActive("block");
     } else if (drawerOpen) {
-      setActive("-50%");
+      setActive("-100%");
       setOverlayActive("none");
     }
   };
@@ -95,7 +108,7 @@ export const Header = ({ onLangChange }) => {
     onLangChange(lang);
     setDropOpen(false);
     setDrawerOpen(false);
-    setActive("-50%");
+    setActive("-100%");
     setOverlayActive("none");
     window.scrollTo({
       top: 0,
@@ -126,6 +139,7 @@ export const Header = ({ onLangChange }) => {
       <>
         <DrawerOverlay onClick={toggleDrawer} $overlayActive={overlayActive} />
         <DrawerMenu $active={active}>
+          <ProfileBg />
           <CloseButton onClick={toggleDrawer}>
             <FaWindowClose />
           </CloseButton>

@@ -12,7 +12,7 @@ const Btn = styled.button`
   position: fixed;
   bottom: 5%;
   right: 2%;
-  z-index: 99;
+  z-index: 98;
   background-color: ${colors.point};
   color: white;
   border: none;
