@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import { colors, spacing } from "../../../GlobalStyle";
+import { spacing } from "../../../GlobalStyle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid } from "swiper/modules";
 import { Link } from "react-router-dom";
-
+import { shop_params, festi_params, place_params } from "./ListParams";
 const Section = styled.section`
   padding: 100px 0 0 ${spacing.side};
+  word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
 
   img {
     border-radius: 10px;
@@ -29,6 +30,10 @@ const Title = styled.div`
   font-size: 26px;
   font-weight: 600;
   margin-bottom: 15px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const Wrap = styled.div`
@@ -64,105 +69,16 @@ const TitleBg = styled.div`
   }
 `;
 
-const shop_params = {
-  slidesPerView: 5.4,
-  spaceBetween: 15,
-  grid: {
-    rows: 2,
-  },
-  breakpoints: {
-    320: {
-      slidesPerView: 2.1,
-      spaceBetween: 5,
-      grid: {
-        rows: 2,
-      },
-    },
-    640: {
-      slidesPerView: 3.2,
-      spaceBetween: 5,
-      grid: {
-        rows: 2,
-      },
-    },
-    768: {
-      slidesPerView: 4.6,
-      spaceBetween: 10,
-      grid: {
-        rows: 2,
-      },
-    },
-    1024: {
-      slidesPerView: 5.4,
-      spaceBetween: 15,
-      grid: {
-        rows: 2,
-      },
-    },
-  },
-};
-
-const festi_params = {
-  slidesPerView: 3.2,
-  spaceBetween: 15,
-  breakpoints: {
-    320: {
-      slidesPerView: 1.2,
-      spaceBetween: 5,
-    },
-    640: {
-      slidesPerView: 2.3,
-      spaceBetween: 10,
-    },
-    1024: {
-      slidesPerView: 3.2,
-      spaceBetween: 15,
-    },
-  },
-};
-
-const place_params = {
-  slidesPerView: 4.4,
-  spaceBetween: 15,
-  grid: {
-    rows: 3,
-  },
-  breakpoints: {
-    320: {
-      slidesPerView: 2.1,
-      spaceBetween: 5,
-      grid: {
-        rows: 3,
-      },
-    },
-    640: {
-      slidesPerView: 2.8,
-      spaceBetween: 5,
-      grid: {
-        rows: 3,
-      },
-    },
-    768: {
-      slidesPerView: 3.7,
-      spaceBetween: 10,
-      grid: {
-        rows: 3,
-      },
-    },
-    1024: {
-      slidesPerView: 4.4,
-      spaceBetween: 15,
-      grid: {
-        rows: 3,
-      },
-    },
-  },
-};
-
-export const List = ({ shopData, onCleanTitle, festiData, attractData }) => {
+export const List = ({
+  shopData,
+  onCleanTitle,
+  festiData,
+  attractData,
+  isbreak,
+}) => {
   return (
     <>
-      <Section>
+      <Section $isbreak={isbreak}>
         <Title>쇼핑의 모든 것, 부산</Title>
         <Swiper {...shop_params} modules={[Grid]}>
           {shopData.map((data) => (
@@ -185,7 +101,7 @@ export const List = ({ shopData, onCleanTitle, festiData, attractData }) => {
         </Swiper>
       </Section>
 
-      <Section>
+      <Section $isbreak={isbreak}>
         <Title>부산 축제의 모든 것</Title>
         <Swiper {...festi_params}>
           {festiData.map((data) => (
@@ -206,7 +122,7 @@ export const List = ({ shopData, onCleanTitle, festiData, attractData }) => {
         </Swiper>
       </Section>
 
-      <Section>
+      <Section $isbreak={isbreak}>
         <Title>부산의 핫한 장소</Title>
         <Swiper {...place_params} modules={[Grid]}>
           {attractData.map((data) => (

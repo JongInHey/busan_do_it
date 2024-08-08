@@ -21,6 +21,7 @@ const Btn = styled.button`
   cursor: pointer;
   font-size: 24px;
   opacity: ${(props) => (props.$visible ? 1 : 0)};
+  pointer-events: ${(props) => (props.$visible ? "auto" : "none")};
   transition: 0.3s;
 
   &:hover {

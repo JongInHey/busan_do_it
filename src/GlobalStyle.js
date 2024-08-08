@@ -9,7 +9,7 @@ export const colors = {
 export const spacing = {
   side: "80px",
   taside: "40px",
-  moSide: "20px",
+  moSide: "10px",
   top: "70px",
 };
 

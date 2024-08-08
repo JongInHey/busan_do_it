@@ -4,6 +4,7 @@ const Container = styled.section`
   height: 85vh;
   background: url(${(props) => props.$bgUrl}) no-repeat center / cover;
   position: relative;
+  word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
 `;
 
 const WhiteBg = styled.div`
@@ -14,8 +15,8 @@ const WhiteBg = styled.div`
   left: 0;
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.25) 0%,
-    rgba(0, 0, 0, 0.47) 55%,
+    rgba(0, 0, 0, 0.48) 0%,
+    rgba(0, 0, 0, 0.6) 55%,
     rgba(0, 0, 0, 0.2) 100%
   );
 `;
@@ -45,7 +46,7 @@ const ConWrap = styled.div`
     left: 4%;
     margin-right: 10px;
     h3 {
-      font-size: 40px;
+      font-size: 30px;
       letter-spacing: -1px;
       margin-bottom: 20px;
     }
@@ -53,15 +54,18 @@ const ConWrap = styled.div`
     p {
       max-width: 500px;
       width: 100%;
-      font-size: 16px;
-      line-height: 26px;
+      font-size: 14px;
+      line-height: 24px;
     }
   }
 `;
 
-export const MainBanner = ({ attractData, randomIndex }) => {
+export const MainBanner = ({ attractData, randomIndex, isbreak }) => {
   return (
-    <Container $bgUrl={attractData[randomIndex].MAIN_IMG_NORMAL}>
+    <Container
+      $bgUrl={attractData[randomIndex].MAIN_IMG_NORMAL}
+      $isbreak={isbreak}
+    >
       <WhiteBg />
       <ConWrap>
         <h3>{attractData[randomIndex].PLACE}</h3>

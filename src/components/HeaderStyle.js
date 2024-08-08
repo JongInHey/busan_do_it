@@ -12,12 +12,7 @@ export const Container = styled.header`
   left: 0;
   z-index: 99;
 
-  background-color: rgba(255, 255, 255, 0.2);
-  li {
-    &:hover {
-      background-color: ${colors.gradient};
-    }
-  }
+  background-color: rgba(0, 0, 0, 0.2);
   @media screen and (max-width: 1024px) {
     padding: 20px ${spacing.taside};
   }
@@ -33,65 +28,72 @@ export const LOGO = styled.div`
   a {
     color: ${colors.point};
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 22px;
+  }
 `;
 
 export const Menu = styled.ul`
-  width: 400px;
-  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
+  font-size: 30px;
   li {
-    width: 30%;
-    height: 100%;
-    margin-right: 3.33%;
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    background-color: ${colors.point};
+    background-color: rgba(0, 0, 0, 0.05);
+    &:hover {
+      background-color: ${colors.gradient};
+      a {
+        color: white;
+      }
+    }
   }
 
   a {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    color: white;
+    letter-spacing: 0;
+
+    svg {
+      margin-right: 10px;
+    }
   }
 
-  @media screen and (max-width: 1024px) {
-    width: 300px;
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
   }
 `;
 
 export const SideMenu = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  width: 50%;
 
   li {
-    width: 100px;
-    height: 30px;
+    width: 100%;
+    height: 50px;
     border-radius: 5px;
     position: relative;
-    background-color: ${colors.point};
+    background-color: rgba(0, 0, 0, 0.05);
     margin-right: 5%;
   }
 
-  a {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-
-  @media screen and (max-width: 1024px) {
-    li {
-      width: 80px;
-    }
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+    right: 5%;
+    bottom: 5%;
+    width: 90%;
   }
 `;
 
@@ -101,7 +103,19 @@ export const Lang = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  font-size: 30px;
+
+  svg {
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+  &:hover {
+    background-color: ${colors.gradient};
+    color: white;
+  }
 `;
 
 const fadeIn = keyframes`
@@ -129,22 +143,22 @@ const fadeOut = keyframes`
 export const DropGnb = styled.div`
   width: 100%;
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 0;
-  background-color: ${colors.point};
+  background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid #ccc;
   border-radius: 5px;
   opacity: ${(props) => (props.$show ? "1" : "0")};
   animation: ${(props) => (props.$show ? fadeIn : fadeOut)} 0.3s ease-in-out;
   pointer-events: ${(props) => (props.$show ? "auto" : "none")};
   div {
+    font-size: 20px;
     padding: 10px;
-    color: white;
     cursor: pointer;
     text-align: center;
 
     &:hover {
-      background-color: #f0f0f0;
+      background-color: ${colors.gradient};
       color: #222;
     }
   }

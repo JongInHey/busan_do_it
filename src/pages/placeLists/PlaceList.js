@@ -55,7 +55,7 @@ export const PlaceList = ({ lang }) => {
 
         setDataList(fetchData[dataKey].item);
         setFilterData(fetchData[dataKey].item);
-        if (lang === "Ja") {
+        if (lang === "Ja" || lang === "Zht") {
           setIsBreak(true);
         } else {
           setIsBreak(false);

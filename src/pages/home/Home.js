@@ -17,6 +17,7 @@ export const Home = ({ lang }) => {
   const [attractData, setAttractData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [randomIndex, setRandomIndex] = useState(0);
+  const [isbreak, setIsBreak] = useState(false);
 
   const cleanTitle = (title) => {
     const index = title.indexOf("(");
@@ -41,6 +42,12 @@ export const Home = ({ lang }) => {
         setFestiData(getFestiData.item);
         setAttractData(getAttrData.item);
 
+        if (lang === "Ja" || lang === "Zht") {
+          setIsBreak(true);
+        } else {
+          setIsBreak(false);
+        }
+
         const randomIdx = Math.floor(Math.random() * getAttrData.item.length);
         setRandomIndex(randomIdx);
 
@@ -62,12 +69,17 @@ export const Home = ({ lang }) => {
       ) : (
         <>
           <PageTitle titleName={"Home"} />
-          <MainBanner attractData={attractData} randomIndex={randomIndex} />
+          <MainBanner
+            attractData={attractData}
+            randomIndex={randomIndex}
+            isbreak={isbreak}
+          />
           <List
             shopData={shopData}
             festiData={festiData}
             attractData={attractData}
             onCleanTitle={cleanTitle}
+            isbreak={isbreak}
           />
         </>
       )}
