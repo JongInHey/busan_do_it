@@ -20,10 +20,8 @@ const Section = styled.section`
     margin-top: 0 !important;
   }
 
-  span {
-    font-size: 30px;
-    color: ${colors.point};
-    font-weight: 700;
+  @media screen and (max-width: 768px) {
+    padding: 40px 0 0 ${spacing.moSide};
   }
 `;
 
@@ -42,6 +40,10 @@ const PlaceTitle = styled.h3`
   margin-top: 10px;
   font-weight: 500;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const TitleBg = styled.div`
@@ -62,21 +64,107 @@ const TitleBg = styled.div`
   }
 `;
 
+const shop_params = {
+  slidesPerView: 5.4,
+  spaceBetween: 15,
+  grid: {
+    rows: 2,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 2.1,
+      spaceBetween: 5,
+      grid: {
+        rows: 2,
+      },
+    },
+    640: {
+      slidesPerView: 3.2,
+      spaceBetween: 5,
+      grid: {
+        rows: 2,
+      },
+    },
+    768: {
+      slidesPerView: 4.6,
+      spaceBetween: 10,
+      grid: {
+        rows: 2,
+      },
+    },
+    1024: {
+      slidesPerView: 5.4,
+      spaceBetween: 15,
+      grid: {
+        rows: 2,
+      },
+    },
+  },
+};
+
+const festi_params = {
+  slidesPerView: 3.2,
+  spaceBetween: 15,
+  breakpoints: {
+    320: {
+      slidesPerView: 1.2,
+      spaceBetween: 5,
+    },
+    640: {
+      slidesPerView: 2.3,
+      spaceBetween: 10,
+    },
+    1024: {
+      slidesPerView: 3.2,
+      spaceBetween: 15,
+    },
+  },
+};
+
+const place_params = {
+  slidesPerView: 4.4,
+  spaceBetween: 15,
+  grid: {
+    rows: 3,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 2.1,
+      spaceBetween: 5,
+      grid: {
+        rows: 3,
+      },
+    },
+    640: {
+      slidesPerView: 2.8,
+      spaceBetween: 5,
+      grid: {
+        rows: 3,
+      },
+    },
+    768: {
+      slidesPerView: 3.7,
+      spaceBetween: 10,
+      grid: {
+        rows: 3,
+      },
+    },
+    1024: {
+      slidesPerView: 4.4,
+      spaceBetween: 15,
+      grid: {
+        rows: 3,
+      },
+    },
+  },
+};
+
 export const List = ({ shopData, onCleanTitle, festiData, attractData }) => {
   return (
     <>
       <Section>
-        <Title>
-          <span>쇼핑</span>의 모든 것, 부산
-        </Title>
-        <Swiper
-          slidesPerView={5.4}
-          grid={{
-            rows: 2,
-          }}
-          spaceBetween={15}
-          modules={[Grid]}
-        >
+        <Title>쇼핑의 모든 것, 부산</Title>
+        <Swiper {...shop_params} modules={[Grid]}>
           {shopData.map((data) => (
             <SwiperSlide key={data.UC_SEQ}>
               <Link to={`/detail/${data.UC_SEQ}`}>
@@ -98,10 +186,8 @@ export const List = ({ shopData, onCleanTitle, festiData, attractData }) => {
       </Section>
 
       <Section>
-        <Title>
-          부산 <span>축제</span>의 모든 것
-        </Title>
-        <Swiper slidesPerView={3.2} spaceBetween={15}>
+        <Title>부산 축제의 모든 것</Title>
+        <Swiper {...festi_params}>
           {festiData.map((data) => (
             <SwiperSlide key={data.UC_SEQ}>
               <Wrap>
@@ -121,17 +207,8 @@ export const List = ({ shopData, onCleanTitle, festiData, attractData }) => {
       </Section>
 
       <Section>
-        <Title>
-          부산의 <span>핫한</span> 장소
-        </Title>
-        <Swiper
-          slidesPerView={4.4}
-          grid={{
-            rows: 3,
-          }}
-          spaceBetween={15}
-          modules={[Grid]}
-        >
+        <Title>부산의 핫한 장소</Title>
+        <Swiper {...place_params} modules={[Grid]}>
           {attractData.map((data) => (
             <SwiperSlide key={data.UC_SEQ}>
               <Link to={`/detail/${data.UC_SEQ}`}>

@@ -10,7 +10,7 @@
 - [x] Api 설정
 - [x] Loading 설정
 - [x] 카테고리 리스트 설정
-- [] scroll event 설정
+- [x] scroll event 설정
 - [] 각 페이지 ui구성 & 반응형 설정
 - [] 404 page 구성
 - [] deploy
@@ -24,6 +24,6 @@
 - [x] helmet-async
 - [x] react-spinners
 - [x] swiper
+- [x] react-icons
 - [] react-hook-form
-- [] react-icons
 - [] gh-pages

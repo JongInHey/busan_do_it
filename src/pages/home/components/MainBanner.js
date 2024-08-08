@@ -42,20 +42,19 @@ const ConWrap = styled.div`
   }
 
   @media screen and (max-width: 768px) {
+    left: 4%;
+    margin-right: 10px;
     h3 {
-      font-size: 50px;
-      font-weight: 700;
-      letter-spacing: -3px;
-      margin-bottom: 30px;
+      font-size: 40px;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
     }
 
     p {
       max-width: 500px;
       width: 100%;
       font-size: 16px;
-      line-height: 30px;
-      font-weight: 400;
-      opacity: 0.8;
+      line-height: 26px;
     }
   }
 `;
