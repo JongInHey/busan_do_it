@@ -13,9 +13,17 @@ export const Container = styled.header`
   z-index: 99;
 
   background-color: rgba(255, 255, 255, 0.2);
-
+  li {
+    &:hover {
+      background-color: ${colors.gradient};
+    }
+  }
   @media screen and (max-width: 1024px) {
     padding: 20px ${spacing.taside};
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 20px ${spacing.moSide};
   }
 `;
 

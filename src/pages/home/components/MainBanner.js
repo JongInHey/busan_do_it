@@ -31,15 +31,32 @@ const ConWrap = styled.div`
     letter-spacing: -3px;
     margin-bottom: 30px;
     position: relative;
-    
   }
 
   p {
-    width: 700px;
+    width: 650px;
     font-size: 20px;
     line-height: 30px;
     font-weight: 400;
     opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    h3 {
+      font-size: 50px;
+      font-weight: 700;
+      letter-spacing: -3px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      max-width: 500px;
+      width: 100%;
+      font-size: 16px;
+      line-height: 30px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
   }
 `;
 

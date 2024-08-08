@@ -12,8 +12,10 @@ import {
   Bg,
   PlaceTitle,
 } from "./components/ListStyle";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 export const PlaceList = ({ lang }) => {
+  useScrollTop();
   const [datalist, setDataList] = useState();
   const [title, setTitle] = useState();
   const [isLoading, setIsLoading] = useState(true);

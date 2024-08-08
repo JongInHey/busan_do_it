@@ -8,8 +8,10 @@ import "swiper/css/grid";
 
 import { MainBanner } from "./components/MainBanner";
 import { List } from "./components/List";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 export const Home = ({ lang }) => {
+  useScrollTop();
   const [shopData, setShopData] = useState();
   const [festiData, setFestiData] = useState();
   const [attractData, setAttractData] = useState();

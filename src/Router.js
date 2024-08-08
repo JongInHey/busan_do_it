@@ -8,6 +8,7 @@ import { routes } from "./routes";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useState } from "react";
+import { TopBtn } from "./components/Topbtn";
 
 export const Router = () => {
   const [lang, setLang] = useState("Kr");
@@ -25,6 +26,7 @@ export const Router = () => {
         <Route path={routes.search} element={<Search />} />
         <Route path={"/*"} element={<PageNotFound />} />
       </Routes>
+      <TopBtn />
       <Footer />
     </HashRouter>
   );
