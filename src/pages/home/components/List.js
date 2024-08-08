@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { shop_params, festi_params, place_params } from "./ListParams";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 const Section = styled.section`
   padding: 100px 0 0 ${spacing.side};
   word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
@@ -31,6 +32,16 @@ const Title = styled.div`
   font-weight: 600;
   margin-bottom: 15px;
 
+  display: flex;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 22px;
+    opacity: 0.8;
+  }
   @media screen and (max-width: 768px) {
     font-size: 20px;
   }
@@ -79,7 +90,13 @@ export const List = ({
   return (
     <>
       <Section $isbreak={isbreak}>
-        <Title>쇼핑의 모든 것, 부산</Title>
+        <Title>
+          쇼핑의 모든 것, 부산{" "}
+          <Link to={"/placelists/0"}>
+            더보기
+            <MdOutlineAddCircleOutline />
+          </Link>
+        </Title>
         <Swiper {...shop_params} modules={[Grid]}>
           {shopData.map((data) => (
             <SwiperSlide key={data.UC_SEQ}>
@@ -102,7 +119,13 @@ export const List = ({
       </Section>
 
       <Section $isbreak={isbreak}>
-        <Title>부산 축제의 모든 것</Title>
+        <Title>
+          부산 축제의 모든 것{" "}
+          <Link to={"/placelists/1"}>
+            더보기
+            <MdOutlineAddCircleOutline />
+          </Link>
+        </Title>
         <Swiper {...festi_params}>
           {festiData.map((data) => (
             <SwiperSlide key={data.UC_SEQ}>
@@ -123,7 +146,13 @@ export const List = ({
       </Section>
 
       <Section $isbreak={isbreak}>
-        <Title>부산의 핫한 장소</Title>
+        <Title>
+          부산의 핫한 장소{" "}
+          <Link to={"/placelists/2"}>
+            더보기
+            <MdOutlineAddCircleOutline />
+          </Link>
+        </Title>
         <Swiper {...place_params} modules={[Grid]}>
           {attractData.map((data) => (
             <SwiperSlide key={data.UC_SEQ}>
