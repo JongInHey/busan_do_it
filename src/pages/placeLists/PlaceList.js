@@ -19,6 +19,7 @@ export const PlaceList = ({ lang }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [filterData, setFilterData] = useState();
   const [selectedGenre, setSelectedGenre] = useState(null);
+  const [isbreak, setIsBreak] = useState(false);
   const { id: isSelect } = useParams();
 
   const cleanTitle = (title) => {
@@ -52,6 +53,12 @@ export const PlaceList = ({ lang }) => {
 
         setDataList(fetchData[dataKey].item);
         setFilterData(fetchData[dataKey].item);
+        if (lang === "Ja") {
+          setIsBreak(true);
+        } else {
+          setIsBreak(false);
+        }
+
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -72,7 +79,7 @@ export const PlaceList = ({ lang }) => {
     ...new Set(datalist.map((item) => item.GUGUN_NM)),
   ];
 
-  console.log(datalist);
+  // console.log(datalist);
 
   return (
     <>
@@ -81,7 +88,7 @@ export const PlaceList = ({ lang }) => {
       ) : (
         <>
           <PageTitle titleName={"장소리스트"} />
-          <Container>
+          <Container $isbreak={isbreak}>
             <h2>
               날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
             </h2>

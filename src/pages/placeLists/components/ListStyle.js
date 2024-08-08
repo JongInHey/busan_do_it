@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { colors, spacing } from "../../../GlobalStyle";
 
-export const Container = styled.div`
+export const Container = styled.section`
   padding: 150px ${spacing.side};
 
+  word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
   h2 {
     font-size: 60px;
     font-weight: 700;
@@ -45,16 +46,20 @@ export const ConWrap = styled.div`
   grid-template-columns: repeat(4, 1fr);
   row-gap: 30px;
   column-gap: 15px;
-
+  justify-items: center;
   p {
     font-size: 18px;
     margin-top: 10px;
   }
 `;
 
-export const Con = styled.div``;
+export const Con = styled.div`
+  width: 371px;
+`;
 
 export const Bg = styled.div`
+  width: 371px;
+  height: 285px;
   img {
     height: 100%;
     object-fit: cover;

@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { spacing } from "../../../GlobalStyle";
 
 const Container = styled.section`
-  height: 80vh;
-  margin-top: ${spacing.top};
+  height: 85vh;
   background: url(${(props) => props.$bgUrl}) no-repeat center / cover;
   position: relative;
 `;
@@ -16,9 +14,9 @@ const WhiteBg = styled.div`
   left: 0;
   background: linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.37) 55%,
-    rgba(255, 255, 255, 0.3) 100%
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.47) 55%,
+    rgba(0, 0, 0, 0.2) 100%
   );
 `;
 
@@ -26,19 +24,22 @@ const ConWrap = styled.div`
   position: absolute;
   bottom: 7%;
   left: 5%;
+  color: white;
   h3 {
     font-size: 70px;
     font-weight: 700;
     letter-spacing: -3px;
     margin-bottom: 30px;
     position: relative;
+    
   }
 
   p {
     width: 700px;
     font-size: 20px;
     line-height: 30px;
-    font-weight: 500;
+    font-weight: 400;
+    opacity: 0.8;
   }
 `;
 

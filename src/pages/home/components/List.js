@@ -10,6 +10,7 @@ const Section = styled.section`
   img {
     border-radius: 10px;
     margin-top: 15px;
+    object-fit: cover;
   }
 
   .swiper-wrapper {
