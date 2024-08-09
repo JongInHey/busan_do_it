@@ -39,7 +39,7 @@ export const Menu = styled.ul`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 30px;
+  font-size: 24px;
 
   li {
     width: 100%;
@@ -71,7 +71,7 @@ export const Menu = styled.ul`
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 20px;
+    font-size: 18px;
 
     li {
       margin-bottom: 10px;
@@ -95,7 +95,6 @@ export const SideMenu = styled.ul`
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 20px;
     right: 0;
     width: 100%;
   }
@@ -107,14 +106,14 @@ export const Lang = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 24px;
 
   svg {
     margin-right: 10px;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   &:hover {
@@ -157,7 +156,7 @@ export const DropGnb = styled.div`
   animation: ${(props) => (props.$show ? fadeIn : fadeOut)} 0.3s ease-in-out;
   pointer-events: ${(props) => (props.$show ? "auto" : "none")};
   div {
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px;
     cursor: pointer;
     text-align: center;

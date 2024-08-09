@@ -5,10 +5,9 @@ import { Container, LOGO, Menu, SideMenu, Lang, DropGnb } from "./HeaderStyle";
 import styled from "styled-components";
 import { colors, spacing } from "../GlobalStyle";
 import { FaMapMarkerAlt, FaShopify, FaWindowClose } from "react-icons/fa";
-import { GiFireworkRocket } from "react-icons/gi";
+import { GiFireworkRocket, GiHamburgerMenu } from "react-icons/gi";
 import { MdSavedSearch } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
-import { RiMenuFold3Line2 } from "react-icons/ri";
 import { MENUIMG_URL } from "../constant/imgUrl";
 
 const HamburgerIcon = styled.div`
@@ -37,7 +36,7 @@ const DrawerMenu = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 160px 0;
-    width: 65%;
+    width: 82%;
   }
 `;
 
@@ -75,7 +74,7 @@ const ProfileBg = styled.div`
 `;
 
 export const Header = ({ onLangChange }) => {
-  const [selectLang, setSelectLang] = useState("한국어");
+  const [selectLang, setSelectLang] = useState("언어");
   const [dropOpen, setDropOpen] = useState(false);
   const [active, setActive] = useState("-100%");
   const [overlayActive, setOverlayActive] = useState("none");
@@ -132,7 +131,7 @@ export const Header = ({ onLangChange }) => {
 
       <div>
         <HamburgerIcon onClick={toggleDrawer}>
-          <RiMenuFold3Line2 />
+          <GiHamburgerMenu />
         </HamburgerIcon>
       </div>
 

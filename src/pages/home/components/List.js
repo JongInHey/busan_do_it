@@ -5,6 +5,7 @@ import { Grid } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { shop_params, festi_params, place_params } from "./ListParams";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
+
 const Section = styled.section`
   padding: 100px 0 0 ${spacing.side};
   word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
@@ -64,7 +65,7 @@ const PlaceTitle = styled.h3`
 
 const TitleBg = styled.div`
   width: 100%;
-  height: 50px;
+  height: 100px;
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
   left: 0;
@@ -72,7 +73,9 @@ const TitleBg = styled.div`
   display: flex;
   align-items: center;
   padding: 0 20px;
-  border-radius: 15px;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
   h3 {
     text-align: left;
     margin-top: 0;
@@ -109,6 +112,10 @@ export const List = ({
                   <PlaceTitle>{data.TITLE}</PlaceTitle>
                 ) : data.MAIN_PLACE === "" ? (
                   <PlaceTitle>{data.PLACE}</PlaceTitle>
+                ) : data.UC_SEQ === 504 || data.UC_SEQ === 505 ? (
+                  <PlaceTitle>
+                    {data.MAIN_PLACE.slice(0, 22) + " ..."}
+                  </PlaceTitle>
                 ) : (
                   <PlaceTitle>{data.MAIN_PLACE}</PlaceTitle>
                 )}
