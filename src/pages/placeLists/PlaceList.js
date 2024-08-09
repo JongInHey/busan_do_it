@@ -108,19 +108,41 @@ export const PlaceList = ({ lang }) => {
             : `getAttraction${lang}`;
 
         const addItems = fetchData[dataKey].item;
-        setDataList(datalist.concat(addItems));
+        const addDataList = datalist.concat(addItems);
+        setDataList(addDataList);
 
-        console.log(fetchData);
-        console.log(resultData);
         if (selectedGenre) {
           setFilterData(
-            datalist
-              .concat(addItems)
-              .filter((item) => item.GUGUN_NM === selectedGenre)
+            addDataList.filter((item) => item.GUGUN_NM === selectedGenre)
           );
         } else {
-          setFilterData(datalist.concat(addItems));
+          setFilterData(addDataList);
         }
+
+        // 카테고리가 포함되어 있는지 확인
+        // const addgenre = addItems.some(
+        //   (item) => item.GUGUN_NM === selectedGenre
+        // );
+
+        // if (addgenre) {
+        //   if (selectedGenre) {
+        //     setFilterData(
+        //       addDataList.filter((item) => item.GUGUN_NM === selectedGenre)
+        //     );
+        //   } else {
+        //     setFilterData(addDataList);
+        //   }
+        // } else if (selectedGenre === null) {
+        //   if (selectedGenre) {
+        //     setFilterData(
+        //       addDataList.filter((item) => item.GUGUN_NM === selectedGenre)
+        //     );
+        //   } else {
+        //     setFilterData(addDataList);
+        //   }
+        // } else {
+        //   isfetchData();
+        // }
       }
     } catch (error) {
       console.log(error);
