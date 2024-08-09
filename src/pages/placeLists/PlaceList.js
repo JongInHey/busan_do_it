@@ -13,23 +13,22 @@ import {
   PlaceTitle,
 } from "./components/ListStyle";
 import { useScrollTop } from "../../lib/useScrollTop";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export const PlaceList = ({ lang }) => {
   useScrollTop();
   const [datalist, setDataList] = useState();
+  const [filterData, setFilterData] = useState();
+  const [resultData, setResultData] = useState();
   const [title, setTitle] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [filterData, setFilterData] = useState();
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [isbreak, setIsBreak] = useState(false);
   const { id: isSelect } = useParams();
 
   const cleanTitle = (title) => {
     const index = title.indexOf("(");
-    if (index !== -1) {
-      return title.substring(0, index).trim();
-    }
-    return title;
+    return index !== -1 ? title.substring(0, index).trim() : title;
   };
 
   useEffect(() => {
@@ -37,13 +36,13 @@ export const PlaceList = ({ lang }) => {
       try {
         let fetchData;
         if (isSelect === "0") {
-          fetchData = await shoppingList(lang);
+          fetchData = await shoppingList(lang, 1);
           setTitle("쇼핑");
         } else if (isSelect === "1") {
-          fetchData = await festivalList(lang);
+          fetchData = await festivalList(lang, 1);
           setTitle("축제");
         } else if (isSelect === "2") {
-          fetchData = await attractionList(lang);
+          fetchData = await attractionList(lang, 1);
           setTitle("명소");
         }
         const dataKey =
@@ -54,7 +53,10 @@ export const PlaceList = ({ lang }) => {
             : `getAttraction${lang}`;
 
         setDataList(fetchData[dataKey].item);
+        setResultData(fetchData[dataKey]);
         setFilterData(fetchData[dataKey].item);
+        setSelectedGenre(null);
+
         if (lang === "Ja" || lang === "Zht") {
           setIsBreak(true);
         } else {
@@ -70,19 +72,60 @@ export const PlaceList = ({ lang }) => {
 
   const handleSelect = (genre) => {
     setSelectedGenre(genre);
-    if (genre === null) {
-      setFilterData(datalist);
-    } else {
-      setFilterData(datalist.filter((item) => item.GUGUN_NM === genre));
-    }
+    setFilterData(
+      genre === null
+        ? datalist
+        : datalist.filter((item) => item.GUGUN_NM === genre)
+    );
   };
 
   const uniqueGenre = datalist && [
     ...new Set(datalist.map((item) => item.GUGUN_NM)),
   ];
 
-  // console.log(datalist);
+  const morePage = () =>
+    resultData.pageNo < Math.ceil(resultData.totalCount / resultData.numOfRows);
 
+  const isfetchData = async () => {
+    try {
+      if (morePage()) {
+        let page = (resultData.pageNo += 1);
+        let fetchData;
+
+        if (isSelect === "0") {
+          fetchData = await shoppingList(lang, page);
+        } else if (isSelect === "1") {
+          fetchData = await festivalList(lang, page);
+        } else if (isSelect === "2") {
+          fetchData = await attractionList(lang, page);
+        }
+
+        const dataKey =
+          isSelect === "0"
+            ? `getShopping${lang}`
+            : isSelect === "1"
+            ? `getFestival${lang}`
+            : `getAttraction${lang}`;
+
+        const addItems = fetchData[dataKey].item;
+        setDataList(datalist.concat(addItems));
+
+        console.log(fetchData);
+        console.log(resultData);
+        if (selectedGenre) {
+          setFilterData(
+            datalist
+              .concat(addItems)
+              .filter((item) => item.GUGUN_NM === selectedGenre)
+          );
+        } else {
+          setFilterData(datalist.concat(addItems));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       {isLoading ? (
@@ -90,60 +133,68 @@ export const PlaceList = ({ lang }) => {
       ) : (
         <>
           <PageTitle titleName={"장소리스트"} />
-          <Container $isbreak={isbreak}>
-            <h2>
-              날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
-            </h2>
 
-            <SCategory>
-              <Button
-                onClick={() => handleSelect(null)}
-                $isSelected={selectedGenre === null}
-              >
-                All
-              </Button>
-              {uniqueGenre.map((genre) => (
+          <InfiniteScroll
+            dataLength={filterData.length}
+            next={isfetchData}
+            hasMore={morePage()}
+            loader={<Loading />}
+          >
+            <Container $isbreak={isbreak}>
+              <h2>
+                날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
+              </h2>
+
+              <SCategory>
                 <Button
-                  key={genre}
-                  onClick={() => handleSelect(genre)}
-                  $isSelected={selectedGenre === genre}
+                  onClick={() => handleSelect(null)}
+                  $isSelected={selectedGenre === null}
                 >
-                  #{genre}
+                  All
                 </Button>
-              ))}
-            </SCategory>
+                {uniqueGenre.map((genre) => (
+                  <Button
+                    key={genre}
+                    onClick={() => handleSelect(genre)}
+                    $isSelected={selectedGenre === genre}
+                  >
+                    #{genre}
+                  </Button>
+                ))}
+              </SCategory>
 
-            <ConWrap>
-              {filterData.map((data) => (
-                <Con key={data.UC_SEQ}>
-                  <Link to={`/detail/${data.UC_SEQ}`}>
-                    <Bg>
-                      <img
-                        src={data.MAIN_IMG_THUMB}
-                        alt={cleanTitle(data.MAIN_TITLE)}
-                      />
-                    </Bg>
-                    {isSelect === "2" ? (
-                      <PlaceTitle>{data.PLACE}</PlaceTitle>
-                    ) : isSelect === "1" ? (
-                      <PlaceTitle>{data.TITLE}</PlaceTitle>
-                    ) : (
-                      <>
-                        {data.MAIN_PLACE === "" && data.PLACE === "" ? (
-                          <PlaceTitle>{data.TITLE}</PlaceTitle>
-                        ) : data.MAIN_PLACE === "" ? (
-                          <PlaceTitle>{data.PLACE}</PlaceTitle>
-                        ) : (
-                          <PlaceTitle>{data.MAIN_PLACE}</PlaceTitle>
-                        )}
-                      </>
-                    )}
-                    <p>{data.ADDR1}</p>
-                  </Link>
-                </Con>
-              ))}
-            </ConWrap>
-          </Container>
+              <ConWrap>
+                {filterData.map((data) => (
+                  <Con key={data.UC_SEQ}>
+                    <Link to={`/detail/${data.UC_SEQ}`}>
+                      <Bg>
+                        <img
+                          src={data.MAIN_IMG_THUMB}
+                          alt={cleanTitle(data.MAIN_TITLE)}
+                        />
+                      </Bg>
+                      {isSelect === "2" ? (
+                        <PlaceTitle>{data.PLACE}</PlaceTitle>
+                      ) : isSelect === "1" ? (
+                        <PlaceTitle>{data.TITLE}</PlaceTitle>
+                      ) : (
+                        <>
+                          {data.MAIN_PLACE === "" && data.PLACE === "" ? (
+                            <PlaceTitle>{data.TITLE}</PlaceTitle>
+                          ) : data.MAIN_PLACE === "" ? (
+                            <PlaceTitle>{data.PLACE}</PlaceTitle>
+                          ) : (
+                            <PlaceTitle>{data.MAIN_PLACE}</PlaceTitle>
+                          )}
+                        </>
+                      )}
+                      <p>{data.ADDR1}</p>
+                    </Link>
+                  </Con>
+                ))}
+              </ConWrap>
+            </Container>
+          </InfiniteScroll>
         </>
       )}
     </>

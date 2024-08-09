@@ -30,9 +30,9 @@ export const Home = ({ lang }) => {
   useEffect(() => {
     (async () => {
       try {
-        const shopData = await shoppingList(lang);
-        const festiData = await festivalList(lang);
-        const attrData = await attractionList(lang);
+        const shopData = await shoppingList(lang, 1);
+        const festiData = await festivalList(lang, 1);
+        const attrData = await attractionList(lang, 1);
 
         const getShopData = shopData[`getShopping${lang}`];
         const getFestiData = festiData[`getFestival${lang}`];
