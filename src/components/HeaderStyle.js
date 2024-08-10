@@ -13,6 +13,7 @@ export const Container = styled.header`
   z-index: 99;
 
   background-color: rgba(0, 0, 0, 0.2);
+
   @media screen and (max-width: 1024px) {
     padding: 20px ${spacing.taside};
   }

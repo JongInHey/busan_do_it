@@ -148,6 +148,7 @@ export const PlaceList = ({ lang }) => {
       console.log(error);
     }
   };
+  // console.log(datalist);
   return (
     <>
       {isLoading ? (
@@ -156,35 +157,36 @@ export const PlaceList = ({ lang }) => {
         <>
           <PageTitle titleName={"장소리스트"} />
 
-          <InfiniteScroll
-            dataLength={filterData.length}
-            next={isfetchData}
-            hasMore={morePage()}
-            loader={<Loading />}
-          >
-            <Container $isbreak={isbreak}>
-              <h2>
-                날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
-              </h2>
+          <Container $isbreak={isbreak}>
+            <h2>
+              날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
+            </h2>
 
-              <SCategory>
+            <SCategory>
+              <Button
+                onClick={() => handleSelect(null)}
+                $isSelected={selectedGenre === null}
+              >
+                All
+              </Button>
+              {uniqueGenre.map((genre) => (
                 <Button
-                  onClick={() => handleSelect(null)}
-                  $isSelected={selectedGenre === null}
+                  key={genre}
+                  onClick={() => handleSelect(genre)}
+                  $isSelected={selectedGenre === genre}
                 >
-                  All
+                  #{genre}
                 </Button>
-                {uniqueGenre.map((genre) => (
-                  <Button
-                    key={genre}
-                    onClick={() => handleSelect(genre)}
-                    $isSelected={selectedGenre === genre}
-                  >
-                    #{genre}
-                  </Button>
-                ))}
-              </SCategory>
+              ))}
+            </SCategory>
 
+            <InfiniteScroll
+              dataLength={filterData.length}
+              next={isfetchData}
+              hasMore={morePage()}
+              loader={<Loading />}
+              style={{ overflow: "unset" }}
+            >
               <ConWrap>
                 {filterData.map((data) => (
                   <Con key={data.UC_SEQ}>
@@ -196,7 +198,13 @@ export const PlaceList = ({ lang }) => {
                         />
                       </Bg>
                       {isSelect === "2" ? (
-                        <PlaceTitle>{data.PLACE}</PlaceTitle>
+                        <>
+                          {data.PLACE === "" ? (
+                            <PlaceTitle>{data.SUBTITLE}</PlaceTitle>
+                          ) : (
+                            <PlaceTitle>{data.PLACE}</PlaceTitle>
+                          )}
+                        </>
                       ) : isSelect === "1" ? (
                         <PlaceTitle>{data.TITLE}</PlaceTitle>
                       ) : (
@@ -215,8 +223,8 @@ export const PlaceList = ({ lang }) => {
                   </Con>
                 ))}
               </ConWrap>
-            </Container>
-          </InfiniteScroll>
+            </InfiniteScroll>
+          </Container>
         </>
       )}
     </>

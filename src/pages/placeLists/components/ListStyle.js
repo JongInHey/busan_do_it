@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors, spacing } from "../../../GlobalStyle";
 
 export const Container = styled.section`
-  padding: 150px ${spacing.side};
+  padding: 150px ${spacing.side} 0;
 
   word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
   h2 {
@@ -15,6 +15,19 @@ export const Container = styled.section`
       color: ${colors.point};
     }
   }
+
+  @media screen and (max-width: 1024px) {
+    padding: 150px ${spacing.taside} 0 ${spacing.taside};
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 120px ${spacing.moSide} 0 ${spacing.moSide};
+
+    h2 {
+      font-size: 40px;
+      margin-bottom: 35px;
+    }
+  }
 `;
 
 export const SCategory = styled.div`
@@ -24,11 +37,15 @@ export const SCategory = styled.div`
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const Button = styled.button`
   all: unset;
-  padding: 5px 15px 6px 15px;
+  padding: 5px 15px 7px 15px;
   margin-right: 10px;
   margin-bottom: 5px;
   text-align: center;
@@ -39,6 +56,12 @@ export const Button = styled.button`
   border-radius: 30px;
   cursor: pointer;
   color: ${(props) => (props.$isSelected ? "white" : "rgba(0, 0, 0, 0.8)")};
+
+  @media screen and (max-width: 768px) {
+    margin-right: 8px;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
 `;
 
 export const ConWrap = styled.div`
@@ -51,18 +74,38 @@ export const ConWrap = styled.div`
     font-size: 18px;
     margin-top: 10px;
   }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 20px;
+
+    p {
+      font-size: 16px;
+      margin-top: 7px;
+    }
+  }
 `;
 
 export const Con = styled.div`
-  width: 371px;
+  width: 19.8vw;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Bg = styled.div`
-  width: 371px;
   height: 285px;
   img {
     height: 100%;
     object-fit: cover;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 251px;
+    img {
+      border-radius: 10px;
+    }
   }
 `;
 
