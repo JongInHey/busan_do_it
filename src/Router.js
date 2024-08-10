@@ -21,7 +21,7 @@ export const Router = () => {
       <Header onLangChange={handleLangChange} />
       <Routes>
         <Route path={routes.home} element={<Home lang={lang} />} />
-        <Route path={routes.detail} element={<Detail />} />
+        <Route path={routes.detail} element={<Detail lang={lang} />} />
         <Route path={routes.placelists} element={<PlaceList lang={lang} />} />
         <Route path={routes.search} element={<Search />} />
         <Route path={"/*"} element={<PageNotFound />} />

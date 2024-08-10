@@ -13,6 +13,13 @@ const url = (urlName, pageNum) => {
   );
 };
 
+const allurl = (urlName) => {
+  return (
+    baseUrl +
+    `${urlName}?ServiceKey=${ServiceKey}&pageNo=1&numOfRows=150&resultType=json`
+  );
+};
+
 export const shoppingList = (lang, pageNum) =>
   fetch(url(`ShoppingService/getShopping${lang}`, pageNum)).then((res) =>
     res.json()
@@ -25,5 +32,16 @@ export const festivalList = (lang, pageNum) =>
 
 export const attractionList = (lang, pageNum) =>
   fetch(url(`AttractionService/getAttraction${lang}`, pageNum)).then((res) =>
+    res.json()
+  );
+
+export const shoppingListAllList = (lang) =>
+  fetch(allurl(`ShoppingService/getShopping${lang}`)).then((res) => res.json());
+
+export const festivalAllList = (lang) =>
+  fetch(allurl(`FestivalService/getFestival${lang}`)).then((res) => res.json());
+
+export const attractionAllList = (lang) =>
+  fetch(allurl(`AttractionService/getAttraction${lang}`)).then((res) =>
     res.json()
   );
