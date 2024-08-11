@@ -8,12 +8,11 @@ import {
 } from "../../api";
 import { useParams } from "react-router-dom";
 import { useScrollTop } from "../../lib/useScrollTop";
+import { ViewDetail } from "./components/ViewDetail";
 
 export const Detail = ({ lang }) => {
   useScrollTop();
-  const [shopData, setShopData] = useState();
-  const [festiData, setFestiData] = useState();
-  const [attractData, setAttractData] = useState();
+  const [detailData, setDetailData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isbreak, setIsBreak] = useState(false);
   const { id } = useParams();
@@ -29,9 +28,13 @@ export const Detail = ({ lang }) => {
         const getFestiData = festiData[`getFestival${lang}`];
         const getAttrData = attrData[`getAttraction${lang}`];
 
-        setShopData(getShopData.item);
-        setFestiData(getFestiData.item);
-        setAttractData(getAttrData.item);
+        const allData = [
+          ...getShopData.item,
+          ...getFestiData.item,
+          ...getAttrData.item,
+        ];
+        const findData = allData.find((item) => item.UC_SEQ === Number(id));
+        setDetailData(findData);
 
         if (lang === "Ja" || lang === "Zht") {
           setIsBreak(true);
@@ -44,12 +47,12 @@ export const Detail = ({ lang }) => {
         console.log(error);
       }
     })();
-  }, [lang]);
+  }, [lang, id]);
 
   // console.log(shopData);
   // console.log(festiData);
   // console.log(attractData);
-
+  console.log(detailData);
   return (
     <>
       {isLoading ? (
@@ -57,7 +60,11 @@ export const Detail = ({ lang }) => {
       ) : (
         <>
           <PageTitle titleName={"상세페이지"} />
-          <div>Detail</div>
+          {detailData ? (
+            <ViewDetail detailData={detailData} isbreak={isbreak} />
+          ) : (
+            <p>데이터를 찾을 수 없습니다.</p>
+          )}
         </>
       )}
     </>
