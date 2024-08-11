@@ -16,11 +16,19 @@ export const ViewDetail = ({ isbreak, detailData }) => {
         <img src={detailData.MAIN_IMG_NORMAL} alt={detailData.TITLE} />
         <Subtitle>{detailData.SUBTITLE || detailData.TITLE}</Subtitle>
         <Title>{detailData.PLACE || detailData.TITLE}</Title>
-        <Desc>{detailData.ITEMCNTNTS.slice(0, 320) + "..."}</Desc>
+        {detailData.UC_SEQ === 504 || detailData.UC_SEQ === 505 ? (
+          //   <Desc>{detailData.MAIN_PLACE}</Desc>
+          <Desc>{detailData.ITEMCNTNTS.slice(0, 320) + "..."}</Desc>
+        ) : (
+          <Desc>{detailData.ITEMCNTNTS.slice(0, 320) + "..."}</Desc>
+        )}
+
         <InfoSection>
-          <InfoRow>
-            <span>주소 : </span> {detailData.ADDR1}
-          </InfoRow>
+          {detailData.ADDR1 && (
+            <InfoRow>
+              <span>주소 : </span> {detailData.ADDR1}
+            </InfoRow>
+          )}
 
           {detailData.USAGE_DAY && (
             <InfoRow>
@@ -36,10 +44,12 @@ export const ViewDetail = ({ isbreak, detailData }) => {
             </InfoRow>
           )}
 
-          <InfoRow>
-            <span>운영시간 : </span>
-            {detailData.USAGE_DAY_WEEK_AND_TIME}
-          </InfoRow>
+          {detailData.USAGE_DAY_WEEK_AND_TIME && (
+            <InfoRow>
+              <span>운영시간 : </span>
+              {detailData.USAGE_DAY_WEEK_AND_TIME}
+            </InfoRow>
+          )}
 
           {detailData.HLDY_INFO && (
             <InfoRow>
@@ -47,9 +57,11 @@ export const ViewDetail = ({ isbreak, detailData }) => {
             </InfoRow>
           )}
 
-          <InfoRow>
-            <span>전화번호 : </span> {detailData.CNTCT_TEL}
-          </InfoRow>
+          {detailData.CNTCT_TEL && (
+            <InfoRow>
+              <span>전화번호 : </span> {detailData.CNTCT_TEL}
+            </InfoRow>
+          )}
 
           {detailData.HOMEPAGE_URL && (
             <InfoRow>

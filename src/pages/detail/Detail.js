@@ -52,7 +52,7 @@ export const Detail = ({ lang }) => {
   // console.log(shopData);
   // console.log(festiData);
   // console.log(attractData);
-  console.log(detailData);
+  // console.log(detailData);
   return (
     <>
       {isLoading ? (
