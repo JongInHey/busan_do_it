@@ -26,5 +26,5 @@
 - [x] swiper
 - [x] react-icons
 - [x] react-infinite-scroll-component
-- [] react-hook-form
+- [x] react-hook-form
 - [] gh-pages
