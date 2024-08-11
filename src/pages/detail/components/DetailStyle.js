@@ -69,6 +69,31 @@ export const Desc = styled.p`
   }
 `;
 
+export const MoreButton = styled.button`
+  all: unset;
+  display: block;
+  margin-top: 20px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  background: linear-gradient(135deg, ${colors.point}, ${colors.point});
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 98;
+  color: white;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+`;
+
 export const InfoSection = styled.div`
   margin-top: 30px;
   padding-top: 40px;

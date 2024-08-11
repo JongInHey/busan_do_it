@@ -7,9 +7,17 @@ import {
   Desc,
   InfoSection,
   InfoRow,
+  MoreButton,
 } from "./DetailStyle";
+import { useState } from "react";
 
 export const ViewDetail = ({ isbreak, detailData }) => {
+  const [isMoreDesc, setIsMoreDesc] = useState(false);
+
+  const handleToggle = () => {
+    setIsMoreDesc(!isMoreDesc);
+  };
+
   return (
     <Container $isbreak={isbreak}>
       <Wrap>
@@ -17,10 +25,19 @@ export const ViewDetail = ({ isbreak, detailData }) => {
         <Subtitle>{detailData.SUBTITLE || detailData.TITLE}</Subtitle>
         <Title>{detailData.PLACE || detailData.TITLE}</Title>
         {detailData.UC_SEQ === 504 || detailData.UC_SEQ === 505 ? (
-          //   <Desc>{detailData.MAIN_PLACE}</Desc>
+          // <Desc>{detailData.MAIN_PLACE}</Desc>
           <Desc>{detailData.ITEMCNTNTS.slice(0, 320) + "..."}</Desc>
         ) : (
-          <Desc>{detailData.ITEMCNTNTS.slice(0, 320) + "..."}</Desc>
+          <>
+            <Desc>
+              {isMoreDesc
+                ? detailData.ITEMCNTNTS
+                : detailData.ITEMCNTNTS.slice(0, 320) + "..."}
+            </Desc>
+            <MoreButton onClick={handleToggle}>
+              {isMoreDesc ? "간략히" : "더보기+"}
+            </MoreButton>
+          </>
         )}
 
         <InfoSection>
