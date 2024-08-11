@@ -48,10 +48,6 @@ export const Detail = ({ lang }) => {
       }
     })();
   }, [lang, id]);
-
-  // console.log(shopData);
-  // console.log(festiData);
-  // console.log(attractData);
   // console.log(detailData);
   return (
     <>
