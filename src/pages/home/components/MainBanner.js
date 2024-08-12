@@ -46,7 +46,7 @@ const ConWrap = styled.div`
     left: 4%;
     margin-right: 10px;
     h3 {
-      font-size: 30px;
+      font-size: 32px;
       letter-spacing: -1px;
       margin-bottom: 20px;
     }
@@ -69,7 +69,7 @@ export const MainBanner = ({ attractData, randomIndex, isbreak }) => {
       <WhiteBg />
       <ConWrap>
         <h3>{attractData[randomIndex].PLACE}</h3>
-        <p>{attractData[randomIndex].ITEMCNTNTS.slice(0, 200) + "..."}</p>
+        <p>{attractData[randomIndex].ITEMCNTNTS.slice(0, 100) + "..."}</p>
       </ConWrap>
     </Container>
   );

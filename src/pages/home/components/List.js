@@ -12,7 +12,6 @@ const Section = styled.section`
 
   img {
     border-radius: 10px;
-    margin-top: 15px;
     object-fit: cover;
   }
 
@@ -20,18 +19,29 @@ const Section = styled.section`
     flex-direction: row;
   }
   .swiper-slide {
-    margin-top: 0 !important;
+    margin-top: 40px !important;
+  }
+
+  span {
+    display: block;
+    margin-top: 10px;
+    opacity: 0.6;
+    line-height: 20px;
   }
 
   @media screen and (max-width: 768px) {
-    padding: 40px 0 0 ${spacing.moSide};
+    padding: 80px 0 0 ${spacing.moSide};
+
+    span {
+      font-size: 12px;
+      margin-top: 5px;
+    }
   }
 `;
 
 const Title = styled.div`
   font-size: 26px;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-weight: 700;
 
   display: flex;
   align-items: center;
@@ -44,7 +54,11 @@ const Title = styled.div`
     opacity: 0.8;
   }
   @media screen and (max-width: 768px) {
-    font-size: 20px;
+    font-size: 23px;
+
+    a {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -55,9 +69,8 @@ const Wrap = styled.div`
 const PlaceTitle = styled.h3`
   font-size: 18px;
   margin-top: 10px;
-  font-weight: 500;
-  text-align: center;
-
+  font-weight: 700;
+  line-height: 22px;
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
@@ -169,7 +182,7 @@ export const List = ({
                   alt={onCleanTitle(data.MAIN_TITLE)}
                 />
                 <PlaceTitle>{data.PLACE}</PlaceTitle>
-                {data.SUBTITLE && <PlaceTitle>{data.SUBTITLE}</PlaceTitle>}
+                {data.SUBTITLE && <span>{data.SUBTITLE}</span>}
               </Link>
             </SwiperSlide>
           ))}

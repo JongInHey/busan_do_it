@@ -7,21 +7,21 @@ export const shop_params = {
   breakpoints: {
     320: {
       slidesPerView: 2.1,
-      spaceBetween: 5,
+      spaceBetween: 10,
       grid: {
         rows: 2,
       },
     },
     640: {
       slidesPerView: 3.2,
-      spaceBetween: 5,
+      spaceBetween: 12,
       grid: {
         rows: 2,
       },
     },
     768: {
       slidesPerView: 4.6,
-      spaceBetween: 10,
+      spaceBetween: 13,
       grid: {
         rows: 2,
       },

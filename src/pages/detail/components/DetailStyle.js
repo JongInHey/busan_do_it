@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors, spacing } from "../../../GlobalStyle";
 
 export const Container = styled.section`
-  padding: 100px ${spacing.side} 0;
+  padding: 100px 20% 0;
   word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
 
   img {
@@ -28,7 +28,6 @@ export const Container = styled.section`
 export const Wrap = styled.div`
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 
   @media screen and (max-width: 768px) {
     padding: 0;
@@ -102,8 +101,11 @@ export const InfoSection = styled.div`
 
 export const InfoRow = styled.div`
   font-size: 20px;
+  font-weight: 300;
   margin-bottom: 20px;
+  line-height: 30px;
   span {
+    font-size: 20px;
     font-weight: 700;
     margin-right: 5px;
   }
@@ -118,5 +120,9 @@ export const InfoRow = styled.div`
 
   @media screen and (max-width: 768px) {
     font-size: 16px;
+
+    span {
+      font-size: 16px;
+    }
   }
 `;

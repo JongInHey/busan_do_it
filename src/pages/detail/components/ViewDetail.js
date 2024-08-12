@@ -24,9 +24,11 @@ export const ViewDetail = ({ isbreak, detailData }) => {
         <img src={detailData.MAIN_IMG_NORMAL} alt={detailData.TITLE} />
         <Subtitle>{detailData.SUBTITLE || detailData.TITLE}</Subtitle>
         <Title>{detailData.PLACE || detailData.TITLE}</Title>
-        {detailData.UC_SEQ === 504 || detailData.UC_SEQ === 505 ? (
-          // <Desc>{detailData.MAIN_PLACE}</Desc>
-          <Desc>{detailData.ITEMCNTNTS.slice(0, 320) + "..."}</Desc>
+        {detailData.UC_SEQ === 504 ||
+        detailData.UC_SEQ === 505 ||
+        detailData.UC_SEQ === 533 ||
+        detailData.UC_SEQ === 1736 ? (
+          <Desc>{detailData.MAIN_PLACE}</Desc>
         ) : (
           <>
             <Desc>
