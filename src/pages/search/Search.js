@@ -92,7 +92,7 @@ const Con = styled.div`
 
   span {
     font-weight: 500;
-    opacity: 0.4;
+    opacity: 0.5;
   }
 `;
 
