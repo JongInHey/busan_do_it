@@ -12,7 +12,8 @@ export const Container = styled.header`
   left: 0;
   z-index: 99;
 
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: ${(props) =>
+    props.$isVisible ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0)"};
 
   @media screen and (max-width: 1024px) {
     padding: 20px ${spacing.taside};

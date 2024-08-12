@@ -80,6 +80,7 @@ export const Header = ({ onLangChange }) => {
   const [overlayActive, setOverlayActive] = useState("none");
   const [drawerOpen, setDrawerOpen] = useState(true);
   const dropgnbRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
 
   const toggleDropdown = () => {
     setDropOpen(!dropOpen);
@@ -117,6 +118,15 @@ export const Header = ({ onLangChange }) => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOut);
     return () => {
       document.removeEventListener("mousedown", handleClickOut);
@@ -124,7 +134,7 @@ export const Header = ({ onLangChange }) => {
   }, [dropgnbRef]);
 
   return (
-    <Container>
+    <Container $isVisible={isVisible}>
       <LOGO>
         <Link to={routes.home}>BUSAN_DO IT</Link>
       </LOGO>
