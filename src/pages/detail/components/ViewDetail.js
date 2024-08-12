@@ -34,7 +34,7 @@ export const ViewDetail = ({ isbreak, detailData }) => {
             <Desc>
               {isMoreDesc
                 ? detailData.ITEMCNTNTS
-                : detailData.ITEMCNTNTS.slice(0, 320) + "..."}
+                : detailData.ITEMCNTNTS.slice(0, 150) + "..."}
             </Desc>
             <MoreButton onClick={handleToggle}>
               {isMoreDesc ? "간략히" : "더보기+"}

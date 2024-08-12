@@ -40,9 +40,8 @@ export const Detail = ({ lang }) => {
           setIsBreak(true);
         } else {
           setIsBreak(false);
-
-          setIsLoading(false);
         }
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
