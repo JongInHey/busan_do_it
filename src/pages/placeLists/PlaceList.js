@@ -213,6 +213,10 @@ export const PlaceList = ({ lang }) => {
                             <PlaceTitle>{data.TITLE}</PlaceTitle>
                           ) : data.MAIN_PLACE === "" ? (
                             <PlaceTitle>{data.PLACE}</PlaceTitle>
+                          ) : data.UC_SEQ === 504 || data.UC_SEQ === 505 ? (
+                            <PlaceTitle>
+                              {data.MAIN_PLACE.slice(0, 20) + " ..."}
+                            </PlaceTitle>
                           ) : (
                             <PlaceTitle>{data.MAIN_PLACE}</PlaceTitle>
                           )}

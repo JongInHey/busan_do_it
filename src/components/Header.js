@@ -10,6 +10,22 @@ import { MdSavedSearch } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { MENUIMG_URL } from "../constant/imgUrl";
 
+const BlurBg = styled.div`
+  width: 100%;
+  height: 72px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 97;
+  background-color: ${(props) =>
+    props.$isVisible ? "rgba(255, 255, 255, 0.6)" : "rgba(255, 255, 255, 0)"};
+  backdrop-filter: ${(props) =>
+    props.$isVisible ? "saturate(170%) blur(20px)" : "none"};
+  @media screen and (max-width: 768px) {
+    height: 63px;
+  }
+`;
+
 const HamburgerIcon = styled.div`
   font-size: 30px;
   cursor: pointer;
@@ -134,73 +150,79 @@ export const Header = ({ onLangChange }) => {
   }, [dropgnbRef]);
 
   return (
-    <Container $isVisible={isVisible}>
-      <LOGO>
-        <Link to={routes.home}>BUSAN_DO IT</Link>
-      </LOGO>
+    <>
+      <BlurBg $isVisible={isVisible} />
+      <Container $isVisible={isVisible}>
+        <LOGO>
+          <Link to={routes.home}>BUSAN_DO IT</Link>
+        </LOGO>
 
-      <div>
-        <HamburgerIcon onClick={toggleDrawer}>
-          <GiHamburgerMenu />
-        </HamburgerIcon>
-      </div>
+        <div>
+          <HamburgerIcon onClick={toggleDrawer}>
+            <GiHamburgerMenu />
+          </HamburgerIcon>
+        </div>
 
-      <>
-        <DrawerOverlay onClick={toggleDrawer} $overlayActive={overlayActive} />
-        <DrawerMenu $active={active}>
-          <ProfileBg />
-          <CloseButton onClick={toggleDrawer}>
-            <FaWindowClose />
-          </CloseButton>
+        <>
+          <DrawerOverlay
+            onClick={toggleDrawer}
+            $overlayActive={overlayActive}
+          />
+          <DrawerMenu $active={active}>
+            <ProfileBg />
+            <CloseButton onClick={toggleDrawer}>
+              <FaWindowClose />
+            </CloseButton>
 
-          <Menu>
-            <li>
-              <Link to={"/placelists/0"} onClick={toggleDrawer}>
-                <FaShopify /> Shopping
-              </Link>
-            </li>
-            <li>
-              <Link to={"/placelists/1"} onClick={toggleDrawer}>
-                <GiFireworkRocket /> Festival
-              </Link>
-            </li>
-            <li>
-              <Link to={"/placelists/2"} onClick={toggleDrawer}>
-                <FaMapMarkerAlt /> Hot Place
-              </Link>
-            </li>
-            <li>
-              <Link to={routes.search} onClick={toggleDrawer}>
-                <MdSavedSearch /> Search
-              </Link>
-            </li>
-          </Menu>
+            <Menu>
+              <li>
+                <Link to={"/placelists/0"} onClick={toggleDrawer}>
+                  <FaShopify /> Shopping
+                </Link>
+              </li>
+              <li>
+                <Link to={"/placelists/1"} onClick={toggleDrawer}>
+                  <GiFireworkRocket /> Festival
+                </Link>
+              </li>
+              <li>
+                <Link to={"/placelists/2"} onClick={toggleDrawer}>
+                  <FaMapMarkerAlt /> Hot Place
+                </Link>
+              </li>
+              <li>
+                <Link to={routes.search} onClick={toggleDrawer}>
+                  <MdSavedSearch /> Search
+                </Link>
+              </li>
+            </Menu>
 
-          <SideMenu>
-            <li ref={dropgnbRef}>
-              <Lang onClick={toggleDropdown}>
-                <GrLanguage />
-                {selectLang}
-              </Lang>
+            <SideMenu>
+              <li ref={dropgnbRef}>
+                <Lang onClick={toggleDropdown}>
+                  <GrLanguage />
+                  {selectLang}
+                </Lang>
 
-              <DropGnb $show={dropOpen}>
-                <div onClick={() => handleLangChange("Kr", "한국어")}>
-                  한국어
-                </div>
-                <div onClick={() => handleLangChange("Zht", "繁體中文")}>
-                  繁體中文
-                </div>
-                <div onClick={() => handleLangChange("Ja", "日本語")}>
-                  日本語
-                </div>
-                <div onClick={() => handleLangChange("En", "English")}>
-                  English
-                </div>
-              </DropGnb>
-            </li>
-          </SideMenu>
-        </DrawerMenu>
-      </>
-    </Container>
+                <DropGnb $show={dropOpen}>
+                  <div onClick={() => handleLangChange("Kr", "한국어")}>
+                    한국어
+                  </div>
+                  <div onClick={() => handleLangChange("Zht", "繁體中文")}>
+                    繁體中文
+                  </div>
+                  <div onClick={() => handleLangChange("Ja", "日本語")}>
+                    日本語
+                  </div>
+                  <div onClick={() => handleLangChange("En", "English")}>
+                    English
+                  </div>
+                </DropGnb>
+              </li>
+            </SideMenu>
+          </DrawerMenu>
+        </>
+      </Container>
+    </>
   );
 };

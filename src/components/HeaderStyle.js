@@ -13,10 +13,6 @@ export const Container = styled.header`
   z-index: 99;
   border-bottom: ${(props) =>
     props.$isVisible ? "1px solid rgba(0, 0, 0, 0.2)" : 0};
-  background-color: ${(props) =>
-    props.$isVisible ? "rgba(255, 255, 255, 0.6)" : "rgba(255, 255, 255, 0)"};
-  backdrop-filter: ${(props) =>
-    props.$isVisible ? "saturate(170%) blur(20px)" : "none"};
 
   @media screen and (max-width: 1024px) {
     padding: 20px ${spacing.taside};

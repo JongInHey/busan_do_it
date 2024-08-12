@@ -127,7 +127,7 @@ export const List = ({
                   <PlaceTitle>{data.PLACE}</PlaceTitle>
                 ) : data.UC_SEQ === 504 || data.UC_SEQ === 505 ? (
                   <PlaceTitle>
-                    {data.MAIN_PLACE.slice(0, 22) + " ..."}
+                    {data.MAIN_PLACE.slice(0, 18) + " ..."}
                   </PlaceTitle>
                 ) : (
                   <PlaceTitle>{data.MAIN_PLACE}</PlaceTitle>
