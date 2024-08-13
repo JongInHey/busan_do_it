@@ -123,7 +123,7 @@ export const Recommand = ({ lang }) => {
     spaceBetween: 15,
     // loop: true,
     autoplay: {
-      delay: 800,
+      delay: 1500,
       disableOnInteraction: false,
     },
     breakpoints: {
@@ -131,7 +131,7 @@ export const Recommand = ({ lang }) => {
         slidesPerView: 1.2,
         spaceBetween: 5,
         autoplay: {
-          delay: 800,
+          delay: 1500,
           disableOnInteraction: false,
         },
       },
@@ -139,7 +139,7 @@ export const Recommand = ({ lang }) => {
         slidesPerView: 2.3,
         spaceBetween: 10,
         autoplay: {
-          delay: 800,
+          delay: 1500,
           disableOnInteraction: false,
         },
       },
@@ -147,7 +147,7 @@ export const Recommand = ({ lang }) => {
         slidesPerView: 4.3,
         spaceBetween: 15,
         autoplay: {
-          delay: 800,
+          delay: 1500,
           disableOnInteraction: false,
         },
       },

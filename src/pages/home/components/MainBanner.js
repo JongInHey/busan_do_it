@@ -61,16 +61,13 @@ const ConWrap = styled.div`
   }
 `;
 
-export const MainBanner = ({ attractData, randomIndex, isbreak }) => {
+export const MainBanner = ({ allData, randomIndex, isbreak }) => {
   return (
-    <Container
-      $bgUrl={attractData[randomIndex].MAIN_IMG_NORMAL}
-      $isbreak={isbreak}
-    >
+    <Container $bgUrl={allData[randomIndex].MAIN_IMG_NORMAL} $isbreak={isbreak}>
       <WhiteBg />
       <ConWrap>
-        <h3>{attractData[randomIndex].PLACE}</h3>
-        <p>{attractData[randomIndex].ITEMCNTNTS.slice(0, 100) + "..."}</p>
+        <h3>{allData[randomIndex].PLACE}</h3>
+        <p>{allData[randomIndex].ITEMCNTNTS.slice(0, 100) + "..."}</p>
       </ConWrap>
     </Container>
   );

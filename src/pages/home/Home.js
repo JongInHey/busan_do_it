@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { attractionList, festivalList, shoppingList } from "../../api";
+import {
+  attractionAllList,
+  attractionList,
+  festivalAllList,
+  festivalList,
+  shoppingList,
+  shoppingListAllList,
+} from "../../api";
 import { PageTitle } from "../../components/PageTitle";
 import { Loading } from "../../components/Loading";
 
@@ -15,6 +22,7 @@ export const Home = ({ lang }) => {
   const [shopData, setShopData] = useState();
   const [festiData, setFestiData] = useState();
   const [attractData, setAttractData] = useState();
+  const [allData, setAllData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [randomIndex, setRandomIndex] = useState(0);
   const [isbreak, setIsBreak] = useState(false);
@@ -33,14 +41,29 @@ export const Home = ({ lang }) => {
         const shopData = await shoppingList(lang, 1);
         const festiData = await festivalList(lang, 1);
         const attrData = await attractionList(lang, 1);
+        const allShopData = await shoppingListAllList(lang);
+        const allFestiData = await festivalAllList(lang);
+        const allAttrData = await attractionAllList(lang);
 
         const getShopData = shopData[`getShopping${lang}`];
         const getFestiData = festiData[`getFestival${lang}`];
         const getAttrData = attrData[`getAttraction${lang}`];
 
+        const getAllShopData = allShopData[`getShopping${lang}`];
+        const getAllFestiData = allFestiData[`getFestival${lang}`];
+        const getAllAttrData = allAttrData[`getAttraction${lang}`];
+
         setShopData(getShopData.item);
         setFestiData(getFestiData.item);
         setAttractData(getAttrData.item);
+
+        const allData = [
+          ...getAllShopData.item,
+          ...getAllFestiData.item,
+          ...getAllAttrData.item,
+        ];
+
+        setAllData(allData);
 
         if (lang === "Ja" || lang === "Zht") {
           setIsBreak(true);
@@ -48,7 +71,7 @@ export const Home = ({ lang }) => {
           setIsBreak(false);
         }
 
-        const randomIdx = Math.floor(Math.random() * getAttrData.item.length);
+        const randomIdx = Math.floor(Math.random() * allData.length);
         setRandomIndex(randomIdx);
 
         setIsLoading(false);
@@ -70,7 +93,7 @@ export const Home = ({ lang }) => {
         <>
           <PageTitle titleName={"Home"} />
           <MainBanner
-            attractData={attractData}
+            allData={allData}
             randomIndex={randomIndex}
             isbreak={isbreak}
           />
