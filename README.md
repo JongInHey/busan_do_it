@@ -11,9 +11,9 @@
 - [x] Loading 설정
 - [x] 카테고리 리스트 설정
 - [x] scroll event 설정
-- [] 각 페이지 ui구성 & 반응형 설정
-- [] 404 page 구성
-- [] deploy
+- [x] 각 페이지 ui구성 & 반응형 설정
+- [x] 404 page 구성
+- [x] deploy
 
 ### 설치할 npm
 
@@ -27,4 +27,4 @@
 - [x] react-icons
 - [x] react-infinite-scroll-component
 - [x] react-hook-form
-- [] gh-pages
+- [x] gh-pages
