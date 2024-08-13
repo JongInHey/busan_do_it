@@ -10,6 +10,7 @@ export const Container = styled.section`
     font-weight: 700;
     text-align: center;
     margin-bottom: 50px;
+    line-height: 55px;
 
     span {
       color: ${colors.point};
@@ -36,7 +37,7 @@ export const SCategory = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 
   @media screen and (max-width: 768px) {
     justify-content: flex-start;
@@ -67,21 +68,20 @@ export const Button = styled.button`
 export const ConWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 30px;
+  row-gap: 60px;
   column-gap: 15px;
   justify-items: center;
   p {
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 14px;
+    opacity: 0.7;
   }
 
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(1, 1fr);
-    row-gap: 20px;
 
     p {
-      font-size: 16px;
-      margin-top: 7px;
+      font-size: 14px;
     }
   }
 `;

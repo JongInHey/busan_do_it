@@ -4,10 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { shop_params, festi_params, place_params } from "./ListParams";
-import { MdOutlineAddCircleOutline } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const Section = styled.section`
-  padding: 100px 0 0 ${spacing.side};
+  padding: 120px 0 0 ${spacing.side};
   word-break: ${(props) => (props.$isbreak ? "normal" : "keep-all")};
 
   img {
@@ -50,14 +50,15 @@ const Title = styled.div`
     display: flex;
     align-items: center;
     margin-left: 15px;
-    font-size: 22px;
-    opacity: 0.8;
+    font-size: 18px;
+    opacity: 0.6;
+    line-height: 28px;
   }
   @media screen and (max-width: 768px) {
     font-size: 23px;
 
     a {
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 `;
@@ -107,10 +108,10 @@ export const List = ({
     <>
       <Section $isbreak={isbreak}>
         <Title>
-          쇼핑의 모든 것, 부산{" "}
+          쇼핑의 모든 것, 부산
           <Link to={"/placelists/0"}>
             더보기
-            <MdOutlineAddCircleOutline />
+            <MdKeyboardArrowRight />
           </Link>
         </Title>
         <Swiper {...shop_params} modules={[Grid]}>
@@ -140,10 +141,10 @@ export const List = ({
 
       <Section $isbreak={isbreak}>
         <Title>
-          부산 축제의 모든 것{" "}
+          부산 축제의 모든 것
           <Link to={"/placelists/1"}>
             더보기
-            <MdOutlineAddCircleOutline />
+            <MdKeyboardArrowRight />
           </Link>
         </Title>
         <Swiper {...festi_params}>
@@ -167,10 +168,10 @@ export const List = ({
 
       <Section $isbreak={isbreak}>
         <Title>
-          부산의 핫한 장소{" "}
+          부산의 핫한 장소
           <Link to={"/placelists/2"}>
             더보기
-            <MdOutlineAddCircleOutline />
+            <MdKeyboardArrowRight />
           </Link>
         </Title>
         <Swiper {...place_params} modules={[Grid]}>

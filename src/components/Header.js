@@ -76,10 +76,29 @@ const CloseButton = styled.div`
   font-size: 26px;
 `;
 
+const BlackBg = styled.div`
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+
+  @media screen and (max-width: 768px) {
+    height: 150px;
+  }
+`;
+
 const ProfileBg = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 98;
   height: 250px;
   width: 100%;
   background: url(${MENUIMG_URL}) no-repeat center / cover;
@@ -169,6 +188,7 @@ export const Header = ({ onLangChange }) => {
             $overlayActive={overlayActive}
           />
           <DrawerMenu $active={active}>
+            <BlackBg />
             <ProfileBg />
             <CloseButton onClick={toggleDrawer}>
               <FaWindowClose />

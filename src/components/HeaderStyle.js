@@ -49,12 +49,9 @@ export const Menu = styled.ul`
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.05);
+
     &:hover {
-      background-color: ${colors.gradient};
-      a {
-        color: white;
-      }
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 
@@ -67,7 +64,7 @@ export const Menu = styled.ul`
     letter-spacing: 0;
 
     svg {
-      margin-right: 10px;
+      margin-right: 15px;
     }
   }
 

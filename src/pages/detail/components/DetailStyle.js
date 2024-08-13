@@ -112,6 +112,7 @@ export const InfoRow = styled.div`
 
   a {
     color: ${colors.point};
+    font-weight: 500;
 
     &:hover {
       text-decoration: underline;

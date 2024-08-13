@@ -158,9 +158,19 @@ export const PlaceList = ({ lang }) => {
           <PageTitle titleName={"장소리스트"} />
 
           <Container $isbreak={isbreak}>
-            <h2>
-              날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
-            </h2>
+            {isSelect === "0" ? (
+              <h2>
+                먹거리와 구경거리 가득! 부산 <span>{title}</span> 스팟
+              </h2>
+            ) : isSelect === "1" ? (
+              <h2>
+                부산과 함께 스트레스 날려버릴 <span>{title}</span> 정보
+              </h2>
+            ) : (
+              <h2>
+                날씨보다 더 핫한 부산의 <span>{title}</span> 스팟
+              </h2>
+            )}
 
             <SCategory>
               <Button

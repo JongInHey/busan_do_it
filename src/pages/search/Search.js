@@ -13,6 +13,7 @@ import { Recommand } from "./components/Recommand";
 import { Result } from "./components/Result";
 import { SearchForm } from "./components/SearchForm";
 import { ErrorMessage } from "./components/ErrorMessage";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 const Container = styled.section`
   padding: 150px ${spacing.side} 0;
@@ -38,6 +39,7 @@ const ResultMessage = styled.h3`
 `;
 
 export const Search = ({ lang }) => {
+  useScrollTop();
   const [searchData, setSearchData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isbreak, setIsBreak] = useState(false);
@@ -114,7 +116,7 @@ export const Search = ({ lang }) => {
             {searchData && (
               <>
                 <ResultMessage>
-                  {"검색하신 " + keyData + "의 검색 결과 입니다..!"}
+                  {"검색하신 " + keyData + "의 검색 결과 입니다!"}
                 </ResultMessage>
                 <Result isLoading={isLoading} searchData={searchData} />
               </>

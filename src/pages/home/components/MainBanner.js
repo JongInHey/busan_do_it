@@ -49,6 +49,7 @@ const ConWrap = styled.div`
       font-size: 32px;
       letter-spacing: -1px;
       margin-bottom: 20px;
+      line-height: 40px;
     }
 
     p {
