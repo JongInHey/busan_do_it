@@ -9,6 +9,7 @@ import {
 import { useParams } from "react-router-dom";
 import { useScrollTop } from "../../lib/useScrollTop";
 import { ViewDetail } from "./components/ViewDetail";
+import { PageNotFound } from "../PageNotFound";
 
 export const Detail = ({ lang }) => {
   useScrollTop();
@@ -58,7 +59,7 @@ export const Detail = ({ lang }) => {
           {detailData ? (
             <ViewDetail detailData={detailData} isbreak={isbreak} />
           ) : (
-            <p>데이터를 찾을 수 없습니다.</p>
+            <PageNotFound />
           )}
         </>
       )}

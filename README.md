@@ -67,7 +67,6 @@
   <img src="https://github.com/user-attachments/assets/c5421f2e-58ab-4d6b-9fbe-ba4e6b4fba15" alt=side" width="49%" />
 </p>
 
-
 1. 메인 페이지
 
    - 메인 베너에 전체 쇼핑, 축제, 명소들을 랜덤 한 인덱스 값으로 타이틀과 상세 설명 함께 보입니다.

@@ -14,6 +14,7 @@ import {
 } from "./components/ListStyle";
 import { useScrollTop } from "../../lib/useScrollTop";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { PageNotFound } from "../PageNotFound";
 
 export const PlaceList = ({ lang }) => {
   useScrollTop();
@@ -44,7 +45,10 @@ export const PlaceList = ({ lang }) => {
         } else if (isSelect === "2") {
           fetchData = await attractionList(lang, 1);
           setTitle("명소");
+        } else {
+          setIsLoading(false);
         }
+
         const dataKey =
           isSelect === "0"
             ? `getShopping${lang}`
@@ -153,7 +157,7 @@ export const PlaceList = ({ lang }) => {
     <>
       {isLoading ? (
         <Loading />
-      ) : (
+      ) : isSelect === "0" || isSelect === "1" || isSelect === "2" ? (
         <>
           <PageTitle titleName={"장소리스트"} />
 
@@ -240,6 +244,8 @@ export const PlaceList = ({ lang }) => {
             </InfiniteScroll>
           </Container>
         </>
+      ) : (
+        <PageNotFound />
       )}
     </>
   );
